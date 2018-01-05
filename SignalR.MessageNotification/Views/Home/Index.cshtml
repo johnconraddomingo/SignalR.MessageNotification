@@ -1,0 +1,44 @@
+﻿@section SPAViews {
+ 
+}
+@section Scripts{
+  
+    @Scripts.Render("~/bundles/app")
+}
+ 
+@*
+    NOTE: It's important that you load jQyery only once, otherwise you'll have an
+    Undefined Hub Exception
+*@
+
+<script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="http://localhost:8080/signalr/hubs"></script>
+
+<script src="~/Scripts/app/notification.js"></script>
+
+<div ng-app="notificationApp">
+    <div ng-controller="notificationController">
+        <h2>
+            Messages
+        </h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Message <span class="badge" ng-show="notifications.length > 0">{{notifications.length}}</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="n in notifications" >
+                    <td>{{n.id}}</td>
+                    <td>{{n.message}}</td>
+                    <td>
+                        <input type="button" class="btn btn-primary" value="Got it" ng-click="readMessage(n.id)" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
