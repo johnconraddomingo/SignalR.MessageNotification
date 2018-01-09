@@ -34,6 +34,7 @@ namespace SignalR.MessageSender
             using (WebApp.Start(url))
             {
                 Console.WriteLine("Server running on {0}", url);
+                Console.WriteLine("Type Something to send it as a message. Type \"exit\" to quit.");
 
                 // Now that SignalR is connected, we want to create a Client Proxy
                 // This enables this same machine to acts as a client enabling it to send data to everyone 
